@@ -3,12 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node server",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "makeMigration": "knex migrate:make migration --knexfile db/knexfile.js",
+    "migrate": "knex migrate:latest --knexfile db/knexfile.js",
+    "seed": "knex seed:run --knexfile db/knexfile.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "core-js": "^2.6.5",
+    "express": "^4.17.1",
+    "knex": "^0.19.1",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
