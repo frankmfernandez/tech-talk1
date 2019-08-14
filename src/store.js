@@ -55,35 +55,22 @@ export default new Vuex.Store({
 
     async loadQueryParams({ commit }) {
       try {
-        const params = {};
-        Object.keys(this.state).forEach((property) => {
-            if (property !== "players"){
-                params[property] = this.state[property] 
-            }
-        })
-        console.log("Data For loadQueryParams", JSON.stringify(params));
-        const { data: players } = await axios.post("/api/players", {
-          queryParams: params,
-        });
-        const playerResults = players.map((player) => ({
-          name: player.name,
-          positionRank: player.positionRank,
-          passingYards: player.passingYards,
-          passingTds: player.passingTds,
-          rushYards: player.rushingYards,
-          rushTds: player.rushingTds,
-          receptionYards: player.receptionYards,
-          receptionTds: player.receptionTds,
-          totalFantasyPoints: player.totalFantasyPoints,
-          totalPprPoints: player.totalPprPoints,
-        }));
+          const { data: players } = await axios.get("http://localhost:8000/api/players") 
 
-        playerResults.splice(20)
+        const wrResults = players.filter((item)=>item.position === "WR")
+        const rbResults = players.filter((item)=>item.position === "RB")
+        const qbResults = players.filter((item)=>item.position === "QB")
+        
+        //console.log("Data From Server Side; ", { data: players });
 
-        console.log("Data From Server Side; ", { data: players });
-        commit("setPlayers", playerResults);
+        commit("setRbResults", rbResults);
+        commit("setWrResults", wrResults);
+        commit("setQbResults", qbResults);
+
+
+        //commit("setPlayers", playerResults);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     },
   },

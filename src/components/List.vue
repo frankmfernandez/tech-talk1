@@ -1,24 +1,23 @@
 <template>
   <div class="list">
-    <h1>This is the List</h1>
-    <div id ="player-results" v-for="player in $store.state.players">
-      <div>{{player.name}}</div>
-      <div>{{player.positionRank}}</div>
-      <div>{{player.passingYards}}</div>
-      <div>{{player.passingTds}}</div>
-      <div>{{player.rushYards}}</div>
-      <div>{{player.rushTds}}</div>
-      <div>{{player.receptionYards}}</div>
-      <div>{{player.receptionTds}}</div>
-      <div>{{player.totalFantasyPoints}}</div>
-      <div>{{player.totalPprPoints}}</div>
-    </div>
+    <QbList v-if="this.$store.state.qb===true"/>
+    <RbList v-if="this.$store.state.rb===true"/>
+    <WrList v-if="this.$store.state.wr===true"/>
   </div>
 </template>
 
 <script>
+import RbList from "./RbList";
+import QbList from "./QbList";
+import WrList from "./WrList";
+
 export default {
   name: "List",
+  components:{
+      RbList,
+      QbList,
+      WrList,
+  }
 };
 </script>
 

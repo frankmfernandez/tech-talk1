@@ -1,11 +1,14 @@
 <template>
   <div class="filter-position">
-    <input type="checkbox" id="qb" v-model="checkQb" />
-    <label for="qb">QB</label>
-    <input type="checkbox" id="rb" v-model="checkRb" />
-    <label for="rb">RB</label>
-    <input type="checkbox" id="wr" v-model="checkWr" />
-    <label for="wr">WR</label>
+    <p>Filter By Position:</p>
+    <div class="selection">
+      <input type="checkbox" id="qb" v-model="checkQb" />
+      <label for="qb">QB</label>
+      <input type="checkbox" id="rb" v-model="checkRb" />
+      <label for="rb">RB</label>
+      <input type="checkbox" id="wr" v-model="checkWr" />
+      <label for="wr">WR</label>
+    </div>
   </div>
 </template>
 
@@ -63,5 +66,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+label{
+  font-size:20px;
+}
+input{
+  font-size:30px;
+}
+.selection{
+  border-bottom: 2px dotted black;
+  
+}
+
+p{
+  text-align:left;
+  border: solid black 2px;
+  width: 130px;
+}
 </style>

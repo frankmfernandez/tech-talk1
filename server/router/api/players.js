@@ -13,7 +13,7 @@ module.exports = (db) => {
         //   const resultingData = players;
         //   console.log(typeof resultingData)
         
-        res.send("Data Generated");
+        res.send(players);
       }
     });
   });
